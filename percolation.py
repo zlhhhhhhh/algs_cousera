@@ -1,6 +1,7 @@
 import sys,random
 sys.path.append(r'.\union_find')
 from union_find import Weighted_Quick_Union
+#原题地址为http://coursera.cs.princeton.edu/algs4/assignments/percolation.html
 
 class Percolation(object):
     def __init__(self,N):
