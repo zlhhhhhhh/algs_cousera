@@ -55,20 +55,21 @@ class Quick_Union(object):
 #Weighted Quick_Union
 class Weighted_Quick_Union(object):
     # Constructor
-    def __init__(self, id,sz):
-        self.id = id
-        self.sz = sz
+    def __init__(self, id):
+        self.id = [i for i in range(len(id))]
+        self.sz = [1 for i in range(len(self.id))]
 
     # Find:Find the root of the object
     def find(self, p):
+        if p<0 or p>len(self.id):
+            raise Exception('Illegal Input')
         while (self.id[p] != p):
-            self.id[p] = self.id[id[p]]
+            self.id[p] = self.id[self.id[p]]
             p = self.id[p]
         return p
 
     #Connected:To Find if Two objects are connected
     def Connected(self,p,q):
-        print(self.find(p)==self.find(q))
         return self.find(p)==self.find(q)
 
     #Union:To Connect two objects, always link the tree with smaller size to the one with bigger size
@@ -88,8 +89,7 @@ class Weighted_Quick_Union(object):
 
 if __name__=='__main__':
     btime = time.time()
-    sz = [1 for i in range(10000000)]
-    qf = Weighted_Quick_Union(list(range(10000000)),sz)
+    qf = Weighted_Quick_Union(list(range(10000000)))
     qf.Union(1,2)
     qf.Union(3,5)
     qf.Union(2,4)
