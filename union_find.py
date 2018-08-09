@@ -44,7 +44,6 @@ class Quick_Union(object):
     #Union: To connect two objects with a parent-child relation
     def Union(self,p,q):
         if self.Connected(p,q):
-            print('=================')
             return
         else:
             m = self.find(p)
@@ -55,8 +54,8 @@ class Quick_Union(object):
 #Weighted Quick_Union
 class Weighted_Quick_Union(object):
     # Constructor
-    def __init__(self, id):
-        self.id = [i for i in range(len(id))]
+    def __init__(self, N):
+        self.id = [i for i in range(N)]
         self.sz = [1 for i in range(len(self.id))]
 
     # Find:Find the root of the object
