@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 from matplotlib import pyplot as plt
 import  numpy as np
 import random
@@ -66,6 +68,7 @@ if __name__=='__main__':
 
 
 =======
+>>>>>>> origin/master
 from matplotlib import pyplot as plt
 import  numpy as np
 import random
@@ -132,4 +135,7 @@ if __name__=='__main__':
 
 
 
+<<<<<<< HEAD
+=======
 >>>>>>> percolation_problem
+>>>>>>> origin/master
