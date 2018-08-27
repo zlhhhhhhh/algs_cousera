@@ -4,7 +4,7 @@
 # Board.py初始化棋盘
 # 大神的讲解https://blog.csdn.net/zhangyuzuishuai/article/details/68167420
 
-#算法真的好难 *6
+# 算法真的好难 *6
 
 import math
 
@@ -23,7 +23,7 @@ class Board(object):
     def hamming(self):
         haming = 0
         for i in range(len(self.blocks)):
-            if self.blocks[i] != 0 and self.blocks[i] != i+1:
+            if self.blocks[i] != 0 and self.blocks[i] != i + 1:
                 haming += 1
         return haming
 
@@ -31,10 +31,10 @@ class Board(object):
     def manhattan(self):
         manhattan = 0
         for i in range(len(self.blocks)):
-            if self.blocks[i]!= 0 and self.blocks[i] != i+1:
-                row_dis = abs(i // self.N - (self.blocks[i]-1)//self.N)
-                col_dis = abs(i % self.N - (self.blocks[i]-1) % self.N)
-                manhattan += (row_dis+ col_dis)
+            if self.blocks[i] != 0 and self.blocks[i] != i + 1:
+                row_dis = abs(i // self.N - (self.blocks[i] - 1) // self.N)
+                col_dis = abs(i % self.N - (self.blocks[i] - 1) % self.N)
+                manhattan += (row_dis + col_dis)
         return manhattan
 
     # 判断是否为目标
@@ -86,19 +86,19 @@ class Board(object):
     def toString(self):
         string = ''
         for i in range(len(self.blocks)):
-            s = str(self.blocks[i],) + '  '
-            if (i+1)%self.N == 0:
+            s = str(self.blocks[i], ) + '  '
+            if (i + 1) % self.N == 0:
                 s += '\n'
             string += s
         return string
 
 
-#单元测试
+# 单元测试
 if __name__ == '__main__':
     test = []
-    file = open(r'D:\Algorithms\4\8puzzle\puzzle3x3-07.txt','r')
+    file = open(r'D:\Algorithms\4\8puzzle\puzzle3x3-07.txt', 'r')
     L = file.readlines()
-    for i in range(1,len(L)):
+    for i in range(1, len(L)):
         s = ' '.join(L[i].split())
         s1 = s.split()
         for k in s1:
@@ -109,6 +109,6 @@ if __name__ == '__main__':
     print(bd.manhattan())
     print(bd.dimension())
     print(bd.isGoal())
-    #print(bd.twin().toString())
+    # print(bd.twin().toString())
     for b in bd:
         print(b.toString())

@@ -6,6 +6,7 @@
 
 from Board import Board
 
+
 class SearchNode(object):
     # python类不能有多个构造函数（多态），可以用默认参数的方法解决
     def __init__(self, bd, previous=None, flag=True):
@@ -33,15 +34,16 @@ class SearchNode(object):
 
     def __lt__(self, other):
         if self.priority == other.priority:
-            return (other.bd.manhattan() - self.bd.manhattan())>0
+            return (other.bd.manhattan() - self.bd.manhattan()) > 0
         else:
-            return (other.priority - self.priority)>0
+            return (other.priority - self.priority) > 0
 
     def __gt__(self, other):
         if self.priority == other.priority:
             return (self.bd.manhattan() - other.bd.manhattan()) > 0
         else:
             return (self.priority - other.priority) > 0
+
 
 if __name__ == '__main__':
     if __name__ == '__main__':
@@ -54,8 +56,8 @@ if __name__ == '__main__':
             for k in s1:
                 test.append(int(k))
         bd = Board(test)
-        print(bd.toString(),bd.twin().toString())
+        print(bd.toString(), bd.twin().toString())
         SN1 = SearchNode(bd)
         SN2 = SearchNode(bd.twin())
-        if SN1 < SN2 :
+        if SN1 < SN2:
             print('test')

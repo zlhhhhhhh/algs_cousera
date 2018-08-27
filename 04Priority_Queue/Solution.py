@@ -6,33 +6,32 @@
 
 # 算法真的好难 * 7
 from SearchNode import SearchNode
-from Priorityqueue import  PriorityQueue_Min as pqMin
+from Priorityqueue import PriorityQueue_Min as pqMin
 from stack_queue import array_stack as stack
-from Board import  Board
+from Board import Board
+
 
 class Solution(object):
 
-    def __init__(self,bd):
+    def __init__(self, bd):
         self.__isSolvable = True
         self._current = None
         self._Solver(bd)
 
-
-    def _Solver(self,bd):
+    def _Solver(self, bd):
         if bd == None:
             raise Exception('Null Board')
         pq_Min = pqMin()
         pq_Min.insert(SearchNode(bd))
-        pq_Min.insert(SearchNode(bd.twin(),flag = False))
-        while(True):
+        pq_Min.insert(SearchNode(bd.twin(), flag=False))
+        while (True):
             self._current = pq_Min.delMin()
             if self._current.bd.isGoal():
                 break
             for nb in self._current.bd:
                 if self._current.previous is None or nb != self._current.previous.bd:
-                    pq_Min.insert(SearchNode(nb,previous = self._current))
+                    pq_Min.insert(SearchNode(nb, previous=self._current))
         self._isSolvable = self._current.flag and self._current.bd.isGoal()
-
 
     def isSolvable(self):
         return self._isSolvable
@@ -53,7 +52,7 @@ class Solution(object):
         while node != None:
             s.push(node.bd)
             node = node.previous
-            i +=1
+            i += 1
         return iter(s)
 
 
@@ -73,7 +72,6 @@ if __name__ == '__main__':
     if Solver.isSolvable() == False:
         print('UnSolvable Puzzle')
     else:
-        print('Min Moves To Solve Puzzle: ',Solver.moves())
+        print('Min Moves To Solve Puzzle: ', Solver.moves())
         for bd in Solver:
             print(bd.toString())
-

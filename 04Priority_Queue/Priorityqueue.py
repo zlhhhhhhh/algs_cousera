@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 第四周课程：优先队列的实现。找到N的元素的前M大的元素。主要API包括Insert,DelMin(Max)，用顺序或者乱序数组实现的复杂度是N
 # 这里我们用堆(Heap)来实现
 
@@ -8,7 +7,7 @@ import random
 
 class PriorityQueue_Min(object):
 
-    def __init__(self, arr = None):
+    def __init__(self, arr=None):
         if arr == None:
             arr = []
         self._arr = arr
@@ -28,7 +27,6 @@ class PriorityQueue_Min(object):
     def _swap(self, a, b):
         self._arr[a], self._arr[b] = self._arr[b], self._arr[a]
 
-
     # 插入一个数到堆的正确位置：先插到最后再向上游
     def _swim(self, k):
         while k > 1 and self._arr[k // 2] > self._arr[k]:
@@ -37,13 +35,13 @@ class PriorityQueue_Min(object):
 
     # 某个节点不满足二叉堆的顺序，将其向下调整
     def _sink(self, k, l):
-        while k <= l / 2 :
+        while k <= l / 2:
             j = 2 * k
-            if j < l and self._arr[j]>self._arr[j+1]:
+            if j < l and self._arr[j] > self._arr[j + 1]:
                 j += 1
             if self._arr[k] < self._arr[j]:
                 break
-            self._swap(k,j)
+            self._swap(k, j)
             k = j
 
     # 插入一个数在堆中
@@ -91,7 +89,7 @@ if __name__ == '__main__':
     print(heap.delMin())
     print(heap.delMin())
     print(heap.sort())
-=======
+
 # 第四周课程：优先队列的实现。找到N的元素的前M大的元素。主要API包括Insert,DelMin(Max)，用顺序或者乱序数组实现的复杂度是N
 # 这里我们用堆(Heap)来实现
 
@@ -119,7 +117,6 @@ class PriorityQueue(object):
     def _swap(self, a, b):
         self._arr[a], self._arr[b] = self._arr[b], self._arr[a]
 
-
     # 插入一个数到堆的正确位置：先插到最后再向上游
     def _swim(self, k):
         while k > 1 and self._arr[k // 2] < self._arr[k]:
@@ -128,13 +125,13 @@ class PriorityQueue(object):
 
     # 某个节点不满足二叉堆的顺序，将其向下调整
     def _sink(self, k, l):
-        while k <= l / 2 :
+        while k <= l / 2:
             j = 2 * k
-            if j < l and self._arr[j]<self._arr[j+1]:
+            if j < l and self._arr[j] < self._arr[j + 1]:
                 j += 1
             if self._arr[k] > self._arr[j]:
                 break
-            self._swap(k,j)
+            self._swap(k, j)
             k = j
 
     # 插入一个数在堆中
@@ -180,4 +177,3 @@ if __name__ == '__main__':
     heap.insert('z')
     print(heap.delMax())
     print(heap.sort())
->>>>>>> 9b599ef0166351d1b5d50de442ce2a17827a65e5
