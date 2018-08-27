@@ -2,6 +2,8 @@
 #主要思路为分而治之，假设一个键左右两边的子序列满足，左边的子序列都小于它，右边的子序列都大于她，那么当两边排好序时，总的序列也排好了
 
 import random
+from elementary_sort import Insertion_Sort
+
 class quickSort(object):
 
     #交换数组两个数
@@ -46,15 +48,15 @@ class quickSort(object):
      #   return i + 1
 
     def _quicksort(self,arr,lo,hi):
-        if lo>=hi:
-            return
+        if lo+5>=hi:
+            ins = Insertion_Sort(arr)
+            return ins.insertion_sort()
         k = self._partition(arr,lo,hi)
         self._quicksort(arr,lo,k-1)
         self._quicksort(arr,k+1,hi)
 
     def quicksort(self,arr):
         random.shuffle(arr)
-        print(arr)
         self._quicksort(arr,0,len(arr)-1)
 
     #针对重复的键值很多的,Dijkstra -Dutch flag problem

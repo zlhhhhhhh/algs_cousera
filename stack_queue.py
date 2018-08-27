@@ -1,33 +1,50 @@
 class Node(object):
-    def __init__(self,value):
+    def __init__(self, value):
         self.value = value
         self.next = None
 
+
 class array_stack(object):
     def __init__(self):
-        self.list = []
+        self._list = []
 
-    def push(self,item):
-        self.list.append(item)
+    def push(self, item):
+        self._list.append(item)
 
     def pop(self):
-        if self.list == []:
+        if self._list == []:
             raise Exception('Empty Stack')
-        return self.list.pop()
+        return self._list.pop()
 
     def size(self):
-        return len(self.list)
+        return len(self._list)
 
     def isEmpty(self):
-        return self.list == []
+        return self._list == []
 
+    def __iter__(self):
+        return Stackiterator(self._list.copy())
+
+# 将栈作为一个迭代器
+class Stackiterator(object):
+    def __init__(self,L):
+        self.L = L
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.L == []:
+            raise StopIteration('NoneType Stack')
+        else:
+            return self.L.pop()
 
 class linked_stack(object):
     def __init__(self):
         self.First = Node(None)
         self.count = 0
 
-    def push(self,item):
+    def push(self, item):
         newNode = Node(item)
         if self.First.value == None:
             self.First = newNode
@@ -39,7 +56,7 @@ class linked_stack(object):
 
     def pop(self):
         value = self.First.value
-        if(value ==None):
+        if (value == None):
             raise Exception('Empty Stack')
         self.First.value = None
         self.First = self.First.next
@@ -51,20 +68,21 @@ class linked_stack(object):
         return self.count
 
     def isEmpty(self):
-        return self.First.value==None
+        return self.First.value == None
 
     def __iter__(self):
         return linkedIterator(self.First)
+
 
 class array_queue(object):
     def __init__(self):
         self.queue = []
 
-    def enqueue(self,item):
+    def enqueue(self, item):
         self.queue.append(item)
 
     def dequeue(self):
-        if self.queue ==[]:
+        if self.queue == []:
             raise Exception('Empty Queue')
         return self.queue.pop(0)
 
@@ -72,7 +90,8 @@ class array_queue(object):
         return len(self.queue)
 
     def isEmpty(self):
-        return self.queue==[]
+        return self.queue == []
+
 
 class linked_queue(object):
     def __init__(self):
@@ -80,19 +99,17 @@ class linked_queue(object):
         self.last = Node(None)
         self.count = 0
 
-    def enqueue(self,item):
+    def enqueue(self, item):
         newNode = Node(item)
         if self.first.value == None:
             self.first = newNode
         else:
             self.last.next = newNode
         self.last = newNode
-        self.count+=1
-
-
+        self.count += 1
 
     def dequeue(self):
-        if(self.first.value == None):
+        if (self.first.value == None):
             raise Exception('Empty Queue')
         else:
             if self.first is self.last:
@@ -100,7 +117,7 @@ class linked_queue(object):
             value = self.first.value
             self.first.value = None
             self.first = self.first.next
-            self.count-=1
+            self.count -= 1
             return value
 
     def size(self):
@@ -112,8 +129,9 @@ class linked_queue(object):
     def __iter__(self):
         return linkedIterator(self.first)
 
+
 class linkedIterator(object):
-    def __init__(self,first):
+    def __init__(self, first):
         self.node = first
 
     def __iter__(self):
@@ -128,19 +146,17 @@ class linkedIterator(object):
             return value
 
 
-
 if __name__ == '__main__':
-    testlist1 = [5,3,12,64,35,95,31,94,312,84,321,5,56,9]
-    testlist2 = ['my','life','is','simple','and','beautiful']
-    #===================
+    testlist1 = [5, 3, 12, 64, 35, 95, 31, 94, 312, 84, 321, 5, 56, 9]
+    testlist2 = ['my', 'life', 'is', 'simple', 'and', 'beautiful']
+    # ===================
     arrstack = array_stack()
 
-
     for i in range(5):
-        arrstack.pop()
-    print(arrstack.list)
+        arrstack.push(i)
     print(arrstack.isEmpty())
     print(arrstack.size())
+
     print('===========================')
     linstack = linked_stack()
     print(linstack.isEmpty())
@@ -175,11 +191,3 @@ if __name__ == '__main__':
         linqueue.dequeue()
     for i in linqueue:
         print(i)
-
-
-
-
-
-
-
-

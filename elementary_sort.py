@@ -55,7 +55,6 @@ class Shell_Sort(object):
             #h = 3*h+1
             h = pow(2,k)-1
             k += 1
-            print(h)
         i = len(self.arr)-1
 
         while(h >= 1):
